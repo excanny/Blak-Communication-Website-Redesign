@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blak Communications - Social Media & Advertising Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3366',
+                        secondary: '#6B5EFF',
+                        accent: '#FFD166',
+                        dark: '#0A0E27',
+                        light: '#F5F5F0',
+                    },
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        bebas: ['Bebas Neue', 'cursive'],
+                    },
+                    animation: {
+                        'slide-in': 'slideIn 0.8s cubic-bezier(0.65, 0, 0.35, 1)',
+                        'fade-up': 'fadeInUp 1s ease-out backwards',
+                        'gradient-flow': 'gradientFlow 3s ease infinite',
+                        'float': 'float 8s ease-in-out infinite',
+                        'rotate': 'rotate 20s linear infinite',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'float-up': 'floatUp 1s ease-out backwards',
+                        'bounce-slow': 'bounce 2s ease-in-out infinite',
+                        'bubble-float': 'bubbleFloat 3s ease-in-out infinite',
+                        'scale-in': 'scaleIn 0.8s ease-out backwards',
+                        'step-pop': 'stepPop 0.8s ease-out backwards',
+                        'shimmer': 'shimmer 3s infinite',
+                        'progress-fill': 'progressFill 5s linear infinite',
+                    },
+                    keyframes: {
+                        slideIn: {
+                            'from': { opacity: '0', transform: 'translateX(100px) scale(0.95)' },
+                            'to': { opacity: '1', transform: 'translateX(0) scale(1)' }
+                        },
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(40px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        gradientFlow: {
+                            '0%, 100%': { backgroundPosition: '0% center' },
+                            '50%': { backgroundPosition: '100% center' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                            '25%': { transform: 'translateY(-30px) translateX(20px)' },
+                            '50%': { transform: 'translateY(-50px) translateX(-20px)' },
+                            '75%': { transform: 'translateY(-30px) translateX(20px)' }
+                        },
+                        rotate: {
+                            'from': { transform: 'rotate(0deg)' },
+                            'to': { transform: 'rotate(360deg)' }
+                        },
+                        morph: {
+                            '0%, 100%': { borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' },
+                            '25%': { borderRadius: '58% 42% 75% 25% / 76% 46% 54% 24%' },
+                            '50%': { borderRadius: '50% 50% 33% 67% / 55% 27% 73% 45%' },
+                            '75%': { borderRadius: '33% 67% 58% 42% / 63% 68% 32% 37%' }
+                        },
+                        floatUp: {
+                            'from': { opacity: '0', transform: 'translateY(60px) scale(0.8)' },
+                            'to': { opacity: '1', transform: 'translateY(0) scale(1)' }
+                        },
+                        bubbleFloat: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(5deg)' }
+                        },
+                        scaleIn: {
+                            'from': { opacity: '0', transform: 'scale(0)' },
+                            'to': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        stepPop: {
+                            '0%': { opacity: '0', transform: 'scale(0) rotate(-180deg)' },
+                            '80%': { transform: 'scale(1.2) rotate(10deg)' },
+                            '100%': { opacity: '1', transform: 'scale(1) rotate(0deg)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-100% -100%' },
+                            '100%': { backgroundPosition: '100% 100%' }
+                        },
+                        progressFill: {
+                            'from': { width: '0%' },
+                            'to': { width: '100%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .typing-cursor::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            width: 3px;
+            height: 100%;
+            background: #FF3366;
+            animation: blink 1s step-end infinite;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FF3366, #6B5EFF, #FFD166);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+        }
+        .bg-grid {
+            background: 
+                linear-gradient(90deg, rgba(107, 94, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(107, 94, 255, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: gridPulse 15s ease-in-out infinite;
+        }
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-light text-dark overflow-x-hidden">
+    <!-- Background Grid -->
+    <div class="bg-grid fixed inset-0 z-0"></div>
+
+    <!-- Navigation -->
+    <!-- <nav class="fixed top-0 left-0 right-0 px-16 py-5 flex justify-between items-center z-50 backdrop-blur-md bg-light/80 border-b-[3px] border-dark animate-[slideDown_0.8s_ease-out]"> -->
+        <!-- <div class="font-bebas text-3xl tracking-wider animate-gradient-flow">BLAK <span class="text-[#1A8DB6]">COMMUNICATIONS</span></div> -->
+        <!-- <ul class="flex gap-12 list-none"> -->
+            <!-- <li><a href="#services" class="no-underline text-dark font-medium text-base relative hover-link">Services</a></li> -->
+            <!-- <li><a href="#portfolio" class="no-underline text-dark font-medium text-base relative hover-link">Portfolio</a></li> -->
+            <!-- <li><a href="#about" class="no-underline text-dark font-medium text-base relative hover-link">About</a></li> -->
+            <!-- <li><a href="#contact" class="no-underline text-dark font-medium text-base relative hover-link">Contact</a></li> -->
+        <!-- </ul> -->
+    <!-- </nav> -->
+	
+	<nav class="fixed top-0 left-0 right-0 px-16 py-5 flex justify-between items-center z-50 backdrop-blur-md bg-light/80 border-b-[3px] border-dark animate-[slideDown_0.8s_ease-out]">
+        <div class="flex items-center gap-4">
+            <img src="https://blakcomms.ca/static/media/logo.e0ff797f5db861407c88.png" alt="BLAK Communications Logo" class="h-12 w-auto object-contain" onerror="this.style.display='none'">
+        </div>
+        <ul class="flex gap-12 list-none">
+            <li><a href="#services" class="no-underline text-dark font-medium text-base relative hover-link">Services</a></li>
+            <li><a href="#portfolio" class="no-underline text-dark font-medium text-base relative hover-link">Portfolio</a></li>
+            <li><a href="#about" class="no-underline text-dark font-medium text-base relative hover-link">About</a></li>
+            <li><a href="#contact" class="no-underline text-dark font-medium text-base relative hover-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Slider -->
+    <section class="relative min-h-screen flex items-center px-16 pt-28 pb-16 z-10 overflow-hidden">
+        <!-- Floating Shapes -->
+        <div class="absolute top-[15%] right-[8%] w-[300px] h-[300px] bg-secondary rounded-full opacity-15 animate-float z-0"></div>
+        <div class="absolute bottom-[15%] left-[5%] w-[200px] h-[200px] bg-accent rotate-45 opacity-15 animate-float z-0" style="animation-direction: reverse;"></div>
+        <div class="absolute top-1/2 left-1/2 w-[250px] h-[250px] bg-primary opacity-15 animate-morph z-0" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
+
+        <div class="w-full max-w-[1400px] mx-auto relative z-10">
+            <!-- Slide 1 -->
+            <div class="hero-slide active grid grid-cols-1 md:grid-cols-2 gap-16 items-center opacity-0">
+                <div class="relative z-10">
+                    <div class="font-bebas text-[8rem] font-normal text-secondary/10 absolute -top-14 -left-8 z-0">01</div>
+                    <h1 class="font-montserrat font-black text-[clamp(3rem,8vw,5.5rem)] leading-none tracking-tight mb-8 animate-fade-up" style="animation-delay: 0.2s;">
+                        We Turn Brands Into<br>
+                        <span class="gradient-text typing-cursor animate-gradient-flow">Cultural Moments</span>
+                    </h1>
+                    <p class="text-xl leading-relaxed max-w-[600px] mb-12 opacity-90 animate-fade-up" style="animation-delay: 0.4s;">
+                        Bold social media campaigns and advertising that doesn't just get seen—it gets remembered, shared, and talked about.
+                    </p>
+                    <div class="flex gap-8 animate-fade-up" style="animation-delay: 0.6s;">
+                        <a href="#contact" class="px-10 py-5 text-lg font-bold no-underline border-[3px] border-dark bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_#0A0E27] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_#0A0E27] relative overflow-hidden">Start Your Campaign</a>
+                        <a href="#portfolio" class="px-10 py-5 text-lg font-bold no-underline border-[3px] border-dark bg-transparent text-dark transition-all duration-300 hover:bg-dark hover:text-light relative overflow-hidden">View Our Work</a>
+                    </div>
+                </div>
+                <div class="relative h-[500px] animate-[fadeIn_1s_ease-out_0.8s_backwards]">
+                    <div class="floating-card absolute top-[1px] left-[50px] bg-white/95 border-[3px] border-dark p-8 shadow-[10px_10px_0_#0A0E27] transition-all duration-400 hover:translate-y-[-20px] hover:rotate-[5deg] hover:scale-110 hover:shadow-[15px_15px_0_#FF3366] animate-float-up" style="animation-delay: 0.3s;">
+                        <div class="text-5xl mb-2 animate-bounce-slow">📱</div>
+                        <div class="font-montserrat font-extrabold text-xl text-dark">Social Media</div>
+                    </div>
+                    <div class="floating-card absolute top-[90px] right-[80px] bg-white/95 border-[3px] border-dark p-8 shadow-[10px_10px_0_#0A0E27] transition-all duration-400 hover:translate-y-[-20px] hover:rotate-[5deg] hover:scale-110 hover:shadow-[15px_15px_0_#FF3366] animate-float-up" style="animation-delay: 0.5s;">
+                        <div class="text-5xl mb-2 animate-bounce-slow">🎯</div>
+                        <div class="font-montserrat font-extrabold text-xl text-dark">Advertising</div>
+                    </div>
+                    <div class="floating-card absolute bottom-[100px] left-[100px] bg-white/95 border-[3px] border-dark p-8 shadow-[10px_10px_0_#0A0E27] transition-all duration-400 hover:translate-y-[-20px] hover:rotate-[5deg] hover:scale-110 hover:shadow-[15px_15px_0_#FF3366] animate-float-up" style="animation-delay: 0.7s;">
+                        <div class="text-5xl mb-2 animate-bounce-slow">✨</div>
+                        <div class="font-montserrat font-extrabold text-xl text-dark">Branding</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide hidden opacity-0">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="relative z-10">
+                        <div class="font-bebas text-[8rem] font-normal text-secondary/10 absolute -top-16 -left-8 z-0">02</div>
+                        <h1 class="font-montserrat font-black text-[clamp(3rem,8vw,5.5rem)] leading-none tracking-tight mb-8">
+                            Design That Demands <br>
+                            <span class="gradient-text typing-cursor animate-gradient-flow">Attention</span>
+                        </h1>
+                        <p class="text-xl leading-relaxed max-w-[600px] mb-12 opacity-90">
+                            From viral social posts to conversion-driven ad campaigns, we create visuals that stop thumbs mid-scroll.
+                        </p>
+                        <div class="flex gap-8">
+                            <a href="#services" class="px-10 py-5 text-lg font-bold no-underline border-[3px] border-dark bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_#0A0E27] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_#0A0E27]">Explore Services</a>
+                            <a href="#contact" class="px-10 py-5 text-lg font-bold no-underline border-[3px] border-dark bg-transparent text-dark transition-all duration-300 hover:bg-dark hover:text-light">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="relative h-[500px]">
+                        <div class="stat-bubble absolute top-[5px] left-[20px] w-[200px] h-[200px] bg-dark text-light rounded-full flex flex-col items-center justify-center border-4 border-primary animate-bubble-float animate-scale-in" style="animation-delay: 0s, 0.3s;">
+                            <div class="font-montserrat font-black text-4xl gradient-text">500%</div>
+                            <div class="text-base opacity-80 mt-2">Growth</div>
+                        </div>
+                        <div class="stat-bubble absolute top-[110px] right-[50px] w-[200px] h-[200px] bg-dark text-light rounded-full flex flex-col items-center justify-center border-4 border-secondary animate-bubble-float animate-scale-in" style="animation-delay: 0.5s, 0.5s;">
+                            <div class="font-montserrat font-black text-4xl gradient-text">50M+</div>
+                            <div class="text-base opacity-80 mt-2">Reach</div>
+                        </div>
+                        <div class="stat-bubble absolute bottom-[60px] left-[120px] w-[200px] h-[200px] bg-dark text-light rounded-full flex flex-col items-center justify-center border-4 border-accent animate-bubble-float animate-scale-in" style="animation-delay: 1s, 0.7s;">
+                            <div class="font-montserrat font-black text-4xl gradient-text">4.8x</div>
+                            <div class="text-base opacity-80 mt-2">ROI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide hidden opacity-0">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="relative z-10">
+                        <div class="font-bebas text-[8rem] font-normal text-secondary/10 absolute -top-16 -left-8 z-0">03</div>
+                        <h1 class="font-montserrat font-black text-[clamp(3rem,8vw,5.5rem)] leading-none tracking-tight mb-8">
+                            Strategy Meets<br>
+                            <span class="gradient-text typing-cursor animate-gradient-flow">Creativity</span>
+                        </h1>
+                        <p class="text-xl leading-relaxed max-w-[600px] mb-12 opacity-90">
+                            Data-driven campaigns with award-winning creative. We don't just make things look good—we make them perform.
+                        </p>
+                        <div class="flex gap-8">
+                            <a href="#portfolio" class="px-10 py-5 text-lg font-bold no-underline border-[3px] border-dark bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_#0A0E27] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_#0A0E27]">See Case Studies</a>
+                            <a href="#about" class="px-10 py-5 text-lg font-bold no-underline border-[3px] border-dark bg-transparent text-dark transition-all duration-300 hover:bg-dark hover:text-light">Our Process</a>
+                        </div>
+                    </div>
+                    <div class="relative h-[500px] flex justify-around items-center">
+                        <div class="text-center animate-step-pop" style="animation-delay: 0.3s;">
+                            <div class="text-8xl mb-4 drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)]">💡</div>
+                            <div class="font-montserrat font-extrabold text-2xl text-dark">Ideate</div>
+                        </div>
+                        <div class="text-center animate-step-pop" style="animation-delay: 0.5s;">
+                            <div class="text-8xl mb-4 drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)]">🎨</div>
+                            <div class="font-montserrat font-extrabold text-2xl text-dark">Design</div>
+                        </div>
+                        <div class="text-center animate-step-pop" style="animation-delay: 0.7s;">
+                            <div class="text-8xl mb-4 drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)]">🚀</div>
+                            <div class="font-montserrat font-extrabold text-2xl text-dark">Launch</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Navigation -->
+        <div class="absolute bottom-8 right-16 flex items-center gap-8 z-[100]">
+            <button onclick="changeSlide(-1)" class="w-[60px] h-[60px] bg-dark border-[3px] border-dark text-light flex items-center justify-center transition-all duration-300 shadow-[5px_5px_0_rgba(0,0,0,0.2)] hover:bg-primary hover:-translate-y-1 hover:shadow-[8px_8px_0_rgba(255,51,102,0.3)] active:translate-y-0 active:shadow-[3px_3px_0_rgba(0,0,0,0.2)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="flex gap-4">
+                <span class="dot w-[15px] h-[15px] bg-white/30 border-[3px] border-dark cursor-pointer transition-all duration-300 hover:bg-white/60 hover:scale-110 active" onclick="goToSlide(0)"></span>
+                <span class="dot w-[15px] h-[15px] bg-white/30 border-[3px] border-dark cursor-pointer transition-all duration-300 hover:bg-white/60 hover:scale-110" onclick="goToSlide(1)"></span>
+                <span class="dot w-[15px] h-[15px] bg-white/30 border-[3px] border-dark cursor-pointer transition-all duration-300 hover:bg-white/60 hover:scale-110" onclick="goToSlide(2)"></span>
+            </div>
+            <button onclick="changeSlide(1)" class="w-[60px] h-[60px] bg-dark border-[3px] border-dark text-light flex items-center justify-center transition-all duration-300 shadow-[5px_5px_0_rgba(0,0,0,0.2)] hover:bg-primary hover:-translate-y-1 hover:shadow-[8px_8px_0_rgba(255,51,102,0.3)] active:translate-y-0 active:shadow-[3px_3px_0_rgba(0,0,0,0.2)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-black/10 z-[99]">
+            <div class="progress-bar h-full bg-gradient-to-r from-primary to-secondary w-0 animate-progress-fill"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-16 bg-dark text-light relative z-10">
+        <div class="absolute top-0 left-0 right-0 h-[5px] bg-gradient-to-r from-primary via-secondary via-accent to-primary bg-[length:200%_100%] animate-gradient-flow"></div>
+        <h2 class="font-bebas text-[clamp(3rem,8vw,6rem)] mb-16 text-center tracking-[0.1em] reveal">What We Create</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-[1400px] mx-auto">
+            <div class="service-card bg-white/5 border-[3px] border-white/10 p-12 transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+                <div class="text-5xl mb-6 relative z-10 inline-block transition-transform duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] group-hover:scale-125 group-hover:rotate-[10deg]">📱</div>
+                <h3 class="font-montserrat font-extrabold text-3xl mb-4 relative z-10">Social Media Design</h3>
+                <p class="text-lg leading-relaxed opacity-90 relative z-10">Scroll-stopping content for Instagram, TikTok, Twitter, and LinkedIn that amplifies your brand voice and drives engagement.</p>
+            </div>
+            <div class="service-card bg-white/5 border-[3px] border-white/10 p-12 transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+                <div class="text-5xl mb-6 relative z-10 inline-block transition-transform duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] group-hover:scale-125 group-hover:rotate-[10deg]">🎯</div>
+                <h3 class="font-montserrat font-extrabold text-3xl mb-4 relative z-10">Ad Campaigns</h3>
+                <p class="text-lg leading-relaxed opacity-90 relative z-10">Multi-channel advertising that converts. From Meta ads to YouTube pre-rolls, we craft campaigns that perform.</p>
+            </div>
+            <div class="service-card bg-white/5 border-[3px] border-white/10 p-12 transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+                <div class="text-5xl mb-6 relative z-10 inline-block transition-transform duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] group-hover:scale-125 group-hover:rotate-[10deg]">✨</div>
+                <h3 class="font-montserrat font-extrabold text-3xl mb-4 relative z-10">Brand Identity</h3>
+                <p class="text-lg leading-relaxed opacity-90 relative z-10">Cohesive visual systems that make your brand instantly recognizable across every platform and touchpoint.</p>
+            </div>
+            <div class="service-card bg-white/5 border-[3px] border-white/10 p-12 transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+                <div class="text-5xl mb-6 relative z-10 inline-block transition-transform duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] group-hover:scale-125 group-hover:rotate-[10deg]">🎬</div>
+                <h3 class="font-montserrat font-extrabold text-3xl mb-4 relative z-10">Motion Graphics</h3>
+                <p class="text-lg leading-relaxed opacity-90 relative z-10">Eye-catching animations and video content that brings your message to life and captures attention in crowded feeds.</p>
+            </div>
+            <div class="service-card bg-white/5 border-[3px] border-white/10 p-12 transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+                <div class="text-5xl mb-6 relative z-10 inline-block transition-transform duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] group-hover:scale-125 group-hover:rotate-[10deg]">📊</div>
+                <h3 class="font-montserrat font-extrabold text-3xl mb-4 relative z-10">Content Strategy</h3>
+                <p class="text-lg leading-relaxed opacity-90 relative z-10">Data-driven strategies that align creative excellence with business goals and audience insights.</p>
+            </div>
+            <div class="service-card bg-white/5 border-[3px] border-white/10 p-12 transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+                <div class="text-5xl mb-6 relative z-10 inline-block transition-transform duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] group-hover:scale-125 group-hover:rotate-[10deg]">🚀</div>
+                <h3 class="font-montserrat font-extrabold text-3xl mb-4 relative z-10">Launch Campaigns</h3>
+                <p class="text-lg leading-relaxed opacity-90 relative z-10">Make your product launch unforgettable with integrated campaigns that create buzz and drive conversions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-32 px-16 bg-light relative z-10">
+        <h2 class="font-bebas text-[clamp(3rem,8vw,6rem)] mb-16 text-center tracking-[0.1em] reveal">Work That Works</h2>
+        
+        <!-- Media Filter Tabs -->
+        <div class="flex justify-center gap-4 mb-12 flex-wrap reveal">
+            <button class="tab-btn px-8 py-4 bg-transparent border-[3px] border-dark font-bold text-base transition-all duration-300 hover:bg-dark hover:text-light active" data-filter="all">All Work</button>
+            <button class="tab-btn px-8 py-4 bg-transparent border-[3px] border-dark font-bold text-base transition-all duration-300 hover:bg-dark hover:text-light" data-filter="video">Videos</button>
+            <button class="tab-btn px-8 py-4 bg-transparent border-[3px] border-dark font-bold text-base transition-all duration-300 hover:bg-dark hover:text-light" data-filter="image">Images</button>
+            <button class="tab-btn px-8 py-4 bg-transparent border-[3px] border-dark font-bold text-base transition-all duration-300 hover:bg-dark hover:text-light" data-filter="campaign">Campaigns</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto">
+            <!-- Portfolio Items -->
+            <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-primary to-secondary cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="video">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+                <div class="absolute top-4 left-4 px-4 py-2 font-bold text-sm z-20 border-2 border-dark bg-primary text-white">▶ VIDEO</div>
+                <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-8 translate-y-full transition-transform duration-400 group-hover:translate-y-0">
+                    <h3 class="font-montserrat font-extrabold text-3xl mb-2">TechFlow Launch</h3>
+                    <p class="mb-4">500% increase in engagement across all platforms</p>
+                    <button class="mt-4 px-6 py-3 bg-primary text-white border-none font-bold transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('video1')">Watch Video</button>
+                </div>
+            </div>
+
+            <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-primary to-secondary cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="image">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+                <div class="absolute top-4 left-4 px-4 py-2 font-bold text-sm z-20 border-2 border-dark bg-accent text-dark">📷 IMAGE</div>
+                <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-8 translate-y-full transition-transform duration-400">
+                    <h3 class="font-montserrat font-extrabold text-3xl mb-2">Bloom Beauty</h3>
+                    <p class="mb-4">Viral campaign with 10M+ impressions</p>
+                    <button class="mt-4 px-6 py-3 bg-primary text-white border-none font-bold transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('image1')">View Gallery</button>
+                </div>
+            </div>
+
+            <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-primary to-secondary cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="video">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+                <div class="absolute top-4 left-4 px-4 py-2 font-bold text-sm z-20 border-2 border-dark bg-primary text-white">▶ VIDEO</div>
+                <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-8 translate-y-full transition-transform duration-400">
+                    <h3 class="font-montserrat font-extrabold text-3xl mb-2">Urban Eats</h3>
+                    <p class="mb-4">300% ROI on paid social campaigns</p>
+                    <button class="mt-4 px-6 py-3 bg-primary text-white border-none font-bold transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('video2')">Watch Video</button>
+                </div>
+            </div>
+
+            <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-primary to-secondary cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="campaign">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+                <div class="absolute top-4 left-4 px-4 py-2 font-bold text-sm z-20 border-2 border-dark bg-secondary text-white">🎯 CAMPAIGN</div>
+                <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-8 translate-y-full transition-transform duration-400">
+                    <h3 class="font-montserrat font-extrabold text-3xl mb-2">FitGear Pro</h3>
+                    <p class="mb-4">Brand transformation driving 400% sales growth</p>
+                    <button class="mt-4 px-6 py-3 bg-primary text-white border-none font-bold transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('campaign1')">View Case Study</button>
+                </div>
+            </div>
+
+            <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-primary to-secondary cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="image">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+                <div class="absolute top-4 left-4 px-4 py-2 font-bold text-sm z-20 border-2 border-dark bg-accent text-dark">📷 IMAGE</div>
+                <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-8 translate-y-full transition-transform duration-400">
+                    <h3 class="font-montserrat font-extrabold text-3xl mb-2">EcoVibe</h3>
+                    <p class="mb-4">Sustainable brand campaign featured in AdWeek</p>
+                    <button class="mt-4 px-6 py-3 bg-primary text-white border-none font-bold transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('image2')">View Gallery</button>
+                </div>
+            </div>
+
+            <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-primary to-secondary cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="campaign">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+                <div class="absolute top-4 left-4 px-4 py-2 font-bold text-sm z-20 border-2 border-dark bg-secondary text-white">🎯 CAMPAIGN</div>
+                <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-8 translate-y-full transition-transform duration-400">
+                    <h3 class="font-montserrat font-extrabold text-3xl mb-2">Pulse Gaming</h3>
+                    <p class="mb-4">Community-driven campaign with 2M+ interactions</p>
+                    <button class="mt-4 px-6 py-3 bg-primary text-white border-none font-bold transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('campaign2')">View Case Study</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="about" class="py-32 px-16 bg-accent relative z-10">
+        <h2 class="font-bebas text-[clamp(3rem,8vw,6rem)] mb-16 text-center tracking-[0.1em] reveal">The Numbers Speak</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 max-w-[1400px] mx-auto text-center">
+            <div class="reveal">
+                <div class="stat-number font-bebas font-black text-8xl text-dark leading-none mb-4">250+</div>
+                <div class="font-medium text-xl text-dark opacity-80">Brands Amplified</div>
+            </div>
+            <div class="reveal">
+                <div class="stat-number font-bebas font-black text-8xl text-dark leading-none mb-4">50M+</div>
+                <div class="font-medium text-xl text-dark opacity-80">Total Impressions</div>
+            </div>
+            <div class="reveal">
+                <div class="stat-number font-bebas font-black text-8xl text-dark leading-none mb-4">4.8x</div>
+                <div class="font-medium text-xl text-dark opacity-80">Average ROI</div>
+            </div>
+            <div class="reveal">
+                <div class="stat-number font-bebas font-black text-8xl text-dark leading-none mb-4">98%</div>
+                <div class="font-medium text-xl text-dark opacity-80">Client Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-32 px-16 bg-dark text-light text-center relative z-10">
+        <h2 class="font-bebas text-[clamp(3rem,8vw,6rem)] mb-8 tracking-[0.1em] reveal">Ready to Amplify Your Brand?</h2>
+        <p class="text-2xl mb-12 opacity-90 reveal">Let's create something that stands out in the noise.</p>
+        <div class="reveal">
+            <a href="mailto:hello@amplifystudio.com" class="inline-block px-10 py-5 text-lg font-bold no-underline border-[3px] border-dark bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_rgba(255,255,255,0.2)]">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-16 px-16 border-t-[5px] border-primary relative z-10">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div>
+                <h4 class="font-bebas text-3xl mb-6 tracking-wider">Blak Communications</h4>
+                <p>Creating cultural moments through bold design and strategic thinking.</p>
+            </div>
+            <div>
+                <h4 class="font-bebas text-3xl mb-6 tracking-wider">Services</h4>
+                <ul class="list-none space-y-3">
+                    <li><a href="#services" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">Social Media Design</a></li>
+                    <li><a href="#services" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">Ad Campaigns</a></li>
+                    <li><a href="#services" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">Brand Identity</a></li>
+                    <li><a href="#services" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">Motion Graphics</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bebas text-3xl mb-6 tracking-wider">Connect</h4>
+                <ul class="list-none space-y-3">
+                    <li><a href="#" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">Instagram</a></li>
+                    <li><a href="#" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">LinkedIn</a></li>
+                    <li><a href="#" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">Behance</a></li>
+                    <li><a href="#" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">Twitter</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bebas text-3xl mb-6 tracking-wider">Contact</h4>
+                <ul class="list-none space-y-3">
+                    <li><a href="mailto:blakcomms@gmail.com" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">hello@amplifystudio.com</a></li>
+                    <li><a href="tel:+1234567890" class="text-light no-underline opacity-80 transition-opacity duration-300 hover:opacity-100 hover:text-primary">+1 (234) 567-890</a></li>
+                    <li class="opacity-80">Regina, Saskatchewan, Canada</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center pt-8 border-t border-white/10 opacity-60">
+            <p>&copy; 2026 Blak Communications. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Media Modal -->
+    <div id="mediaModal" class="hidden fixed inset-0 bg-black/95 z-[10000] items-center justify-center">
+        <div class="modal-content bg-dark border-4 border-primary p-12 max-w-[90%] max-h-[90%] overflow-auto relative">
+            <span class="close-modal absolute top-4 right-6 text-5xl text-light cursor-pointer transition-colors duration-300 hover:text-primary" onclick="closeMediaModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.dot');
+        const progressBar = document.querySelector('.progress-bar');
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.classList.add('hidden');
+                slide.style.opacity = '0';
+            });
+            dots.forEach(dot => {
+                dot.classList.remove('active', 'bg-primary', 'w-10', 'rounded-xl');
+                dot.classList.add('w-[15px]');
+            });
+
+            if (index >= slides.length) currentSlide = 0;
+            else if (index < 0) currentSlide = slides.length - 1;
+            else currentSlide = index;
+
+            slides[currentSlide].classList.remove('hidden');
+            slides[currentSlide].classList.add('active');
+            setTimeout(() => {
+                slides[currentSlide].style.opacity = '1';
+            }, 10);
+
+            dots[currentSlide].classList.add('active', 'bg-primary', 'w-10', 'rounded-xl');
+            dots[currentSlide].classList.remove('w-[15px]');
+
+            resetProgressBar();
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function resetProgressBar() {
+            progressBar.style.animation = 'none';
+            setTimeout(() => {
+                progressBar.style.animation = 'progressFill 5s linear';
+            }, 10);
+        }
+
+        function startAutoPlay() {
+            slideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 5000);
+        }
+
+        showSlide(0);
+        startAutoPlay();
+
+        const heroSlider = document.querySelector('.hero-slide');
+        if (heroSlider) {
+            heroSlider.parentElement.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+                progressBar.style.animationPlayState = 'paused';
+            });
+            heroSlider.parentElement.addEventListener('mouseleave', () => {
+                startAutoPlay();
+                progressBar.style.animationPlayState = 'running';
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Animated counter
+        const animateCounter = (element, target) => {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toString().includes('.') ? target.toFixed(1) + 'x' : target + (target >= 1000000 ? 'M+' : target >= 1000 ? '+' : '%');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toString();
+                }
+            }, 20);
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber) {
+                        const text = statNumber.textContent;
+                        let targetValue = parseFloat(text.replace(/[^0-9.]/g, ''));
+                        animateCounter(statNumber, targetValue);
+                        statsObserver.unobserve(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('#about .reveal').forEach(el => statsObserver.observe(el));
+
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll('.tab-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-primary', 'text-white', 'border-primary');
+                });
+                button.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
+
+                const filter = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    
+                    setTimeout(() => {
+                        if (filter === 'all') {
+                            item.classList.remove('hidden');
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        } else {
+                            if (item.getAttribute('data-type') === filter) {
+                                item.classList.remove('hidden');
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            } else {
+                                item.classList.add('hidden');
+                            }
+                        }
+                    }, index * 50);
+                });
+            });
+        });
+
+        // Hover links
+        document.querySelectorAll('.hover-link').forEach(link => {
+            link.style.position = 'relative';
+            const underline = document.createElement('div');
+            underline.style.cssText = 'position:absolute;bottom:-5px;left:0;width:0;height:3px;background:#FF3366;transition:width 0.3s ease';
+            link.appendChild(underline);
+            link.addEventListener('mouseenter', () => underline.style.width = '100%');
+            link.addEventListener('mouseleave', () => underline.style.width = '0');
+        });
+
+        // Portfolio item hover
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const overlay = item.querySelector('.portfolio-overlay');
+                if (overlay) overlay.style.transform = 'translateY(0)';
+            });
+            item.addEventListener('mouseleave', () => {
+                const overlay = item.querySelector('.portfolio-overlay');
+                if (overlay) overlay.style.transform = 'translateY(100%)';
+            });
+        });
+
+        // Media Modal
+        function openMediaModal(mediaId) {
+            const modal = document.getElementById('mediaModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            const mediaContent = {
+                'video1': '<h2 class="font-bebas text-5xl mb-4 tracking-wider">TechFlow Launch Campaign</h2><p class="mb-8">Complete video showcase with analytics and insights</p><div class="aspect-video bg-gradient-to-br from-secondary to-primary flex items-center justify-center text-6xl">▶</div>',
+                'video2': '<h2 class="font-bebas text-5xl mb-4 tracking-wider">Urban Eats Social Campaign</h2><p class="mb-8">Multi-platform video strategy</p><div class="aspect-video bg-gradient-to-br from-primary to-accent flex items-center justify-center text-6xl">▶</div>',
+                'image1': '<h2 class="font-bebas text-5xl mb-4 tracking-wider">Bloom Beauty Image Gallery</h2><p class="mb-8">High-resolution campaign assets</p><div class="grid grid-cols-2 gap-4"><div class="aspect-square bg-gradient-to-br from-pink-400 to-purple-500"></div><div class="aspect-square bg-gradient-to-br from-red-400 to-pink-500"></div><div class="aspect-square bg-gradient-to-br from-cyan-200 to-pink-200"></div><div class="aspect-square bg-gradient-to-br from-red-300 to-orange-200"></div></div>',
+                'image2': '<h2 class="font-bebas text-5xl mb-4 tracking-wider">EcoVibe Campaign Assets</h2><p class="mb-8">Sustainable brand visuals</p><div class="grid grid-cols-2 gap-4"><div class="aspect-square bg-gradient-to-br from-teal-400 to-blue-500"></div><div class="aspect-square bg-gradient-to-br from-green-500 to-lime-400"></div><div class="aspect-square bg-gradient-to-br from-blue-500 to-cyan-600"></div><div class="aspect-square bg-gradient-to-br from-green-400 to-teal-500"></div></div>',
+                'campaign1': '<h2 class="font-bebas text-5xl mb-4 tracking-wider">FitGear Pro - Full Campaign</h2><p class="mb-8">Complete brand transformation case study</p><div class="bg-white/5 p-8 mb-4"><h3 class="font-montserrat font-extrabold text-2xl mb-4">Campaign Overview</h3><p>A comprehensive rebranding initiative that included social media strategy, paid advertising, influencer partnerships, and content creation.</p></div><div class="grid grid-cols-3 gap-4 mt-8"><div class="bg-white/5 p-6 text-center"><div class="text-4xl font-black text-primary">400%</div><div>Sales Growth</div></div><div class="bg-white/5 p-6 text-center"><div class="text-4xl font-black text-secondary">2.5M+</div><div>Impressions</div></div><div class="bg-white/5 p-6 text-center"><div class="text-4xl font-black text-accent">85%</div><div>Engagement Rate</div></div></div>',
+                'campaign2': '<h2 class="font-bebas text-5xl mb-4 tracking-wider">Pulse Gaming - Community Campaign</h2><p class="mb-8">Building a gaming community from the ground up</p><div class="bg-white/5 p-8 mb-4"><h3 class="font-montserrat font-extrabold text-2xl mb-4">Strategy</h3><p>Leveraged streaming platforms, Discord communities, and user-generated content to create an authentic gaming brand presence.</p></div><div class="grid grid-cols-3 gap-4 mt-8"><div class="bg-white/5 p-6 text-center"><div class="text-4xl font-black text-primary">2M+</div><div>Interactions</div></div><div class="bg-white/5 p-6 text-center"><div class="text-4xl font-black text-secondary">150K</div><div>Community Members</div></div><div class="bg-white/5 p-6 text-center"><div class="text-4xl font-black text-accent">92%</div><div>Positive Sentiment</div></div></div>'
+            };
+            
+            modalBody.innerHTML = mediaContent[mediaId] || '<p>Media content not found</p>';
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                modalBody.style.transform = 'scale(1)';
+                modalBody.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeMediaModal() {
+            const modal = document.getElementById('mediaModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalBody.style.transform = 'scale(0.8)';
+            modalBody.style.opacity = '0';
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        document.getElementById('mediaModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMediaModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            else if (e.key === 'ArrowRight') changeSlide(1);
+            else if (e.key === 'Escape') closeMediaModal();
+        });
+
+        // Ripple effect
+        document.querySelectorAll('button, a').forEach(btn => {
+            btn.style.position = 'relative';
+            btn.style.overflow = 'hidden';
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Parallax
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.hero .absolute').forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.2);
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
