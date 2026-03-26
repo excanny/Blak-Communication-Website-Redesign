@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blak Communications - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors:{primary:'#FF3366',secondary:'#6B5EFF',accent:'#FFD166',dark:'#0A0E27',light:'#F5F5F0'}, fontFamily:{montserrat:['Montserrat','sans-serif'],bebas:['Bebas Neue','cursive']}, animation:{'gradient-flow':'gradientFlow 3s ease infinite','shimmer':'shimmer 3s infinite','slideDown':'slideDown 0.8s ease-out'}, keyframes:{gradientFlow:{'0%,100%':{backgroundPosition:'0% center'},'50%':{backgroundPosition:'100% center'}},shimmer:{'0%':{backgroundPosition:'-100% -100%'},'100%':{backgroundPosition:'100% 100%'}},slideDown:{from:{transform:'translateY(-100%)'},to:{transform:'translateY(0)'}}} } } }
+    </script>
+    <style>
+        .bg-grid{background:linear-gradient(90deg,rgba(107,94,255,.03) 1px,transparent 1px),linear-gradient(rgba(107,94,255,.03) 1px,transparent 1px);background-size:80px 80px}
+        .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.6);transform:scale(0);animation:ripple-out .6s ease-out;pointer-events:none}
+        @keyframes ripple-out{to{transform:scale(4);opacity:0}}
+        .mobile-menu{transform:translateX(100%);transition:transform .3s ease-in-out}
+        .mobile-menu.active{transform:translateX(0)}
+        .hamburger span{transition:all .3s ease}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px)}
+        .reveal{opacity:0;transform:translateY(50px);transition:all .8s ease}
+        .video-embed-wrapper{flex:1;min-height:0;background:#000;display:flex;align-items:center;justify-content:center}
+        .video-embed-wrapper video{width:100%;max-height:calc(90vh - 130px);object-fit:contain;display:block}
+    </style>
+</head>
+<body class="font-montserrat bg-light text-dark overflow-x-hidden">
+<div class="bg-grid fixed inset-0 z-0"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 px-4 sm:px-8 lg:px-16 py-4 lg:py-5 flex justify-between items-center z-50 backdrop-blur-md bg-light/80 border-b-[3px] border-dark animate-slideDown">
+    <a href="index.html"><img src="https://blakcomms.ca/static/media/logo.e0ff797f5db861407c88.png" alt="BLAK" class="h-8 sm:h-10 lg:h-12 w-auto object-contain" onerror="this.style.display='none'"></a>
+    <ul class="hidden lg:flex gap-12 list-none">
+        <li><a href="index.html" class="no-underline text-dark font-medium text-base relative hover-link">Home</a></li>
+        <li><a href="services.html" class="no-underline text-dark font-medium text-base relative hover-link">Services</a></li>
+        <li><a href="portfolio.html" class="no-underline text-primary font-bold text-base relative">Portfolio <span class="absolute -bottom-1 left-0 w-full h-[3px] bg-primary"></span></a></li>
+        <li><a href="about.html" class="no-underline text-dark font-medium text-base relative hover-link">About</a></li>
+        <li><a href="contact.html" class="no-underline text-dark font-medium text-base relative hover-link">Contact</a></li>
+    </ul>
+    <button class="hamburger lg:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center z-[60]" id="mobileMenuBtn">
+        <span class="w-6 h-0.5 bg-dark block"></span><span class="w-6 h-0.5 bg-dark block"></span><span class="w-6 h-0.5 bg-dark block"></span>
+    </button>
+</nav>
+<div class="mobile-menu fixed top-0 right-0 w-full sm:w-80 h-screen bg-dark z-[55] lg:hidden" id="mobileMenu">
+    <button class="absolute top-8 right-6 text-light text-5xl font-light hover:text-primary transition-colors z-[70]" id="mobileMenuClose">×</button>
+    <ul class="flex flex-col gap-8 list-none pt-24 px-8">
+        <li><a href="index.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Home</a></li>
+        <li><a href="services.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Services</a></li>
+        <li><a href="portfolio.html" class="mobile-link no-underline text-primary font-medium text-2xl block py-2">Portfolio</a></li>
+        <li><a href="about.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">About</a></li>
+        <li><a href="contact.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Contact</a></li>
+    </ul>
+</div>
+
+<!-- PAGE HERO -->
+<section class="pt-40 pb-10 px-4 sm:px-8 lg:px-16 relative z-10 text-center bg-dark text-light">
+    <div class="absolute top-0 left-0 right-0 h-[5px] bg-gradient-to-r from-primary via-secondary to-accent bg-[length:200%_100%] animate-gradient-flow"></div>
+    <h1 class="font-bebas text-[3rem] sm:text-[5rem] lg:text-[7rem] tracking-[0.1em] reveal">Work That Works</h1>
+    <p class="text-lg sm:text-xl opacity-70 max-w-2xl mx-auto mt-4 reveal">Real campaigns. Real results.</p>
+</section>
+
+<!-- FILTER TABS -->
+<section class="py-10 px-4 sm:px-8 lg:px-16 bg-light relative z-10">
+    <div class="flex justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 flex-wrap reveal">
+        <button class="tab-btn px-4 sm:px-8 py-3 sm:py-4 bg-primary text-white border-[3px] border-primary font-bold text-sm sm:text-base transition-all duration-300 active" data-filter="all">All Work</button>
+        <button class="tab-btn px-4 sm:px-8 py-3 sm:py-4 bg-transparent border-[3px] border-dark font-bold text-sm sm:text-base transition-all duration-300 hover:bg-dark hover:text-light" data-filter="video">Videos</button>
+        <button class="tab-btn px-4 sm:px-8 py-3 sm:py-4 bg-transparent border-[3px] border-dark font-bold text-sm sm:text-base transition-all duration-300 hover:bg-dark hover:text-light" data-filter="image">Images</button>
+        <button class="tab-btn px-4 sm:px-8 py-3 sm:py-4 bg-transparent border-[3px] border-dark font-bold text-sm sm:text-base transition-all duration-300 hover:bg-dark hover:text-light" data-filter="campaign">Campaigns</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-[1400px] mx-auto">
+
+        <!-- Sheer Gleam -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="video">
+            <video class="absolute inset-0 w-full h-full object-cover" src="assets/videos/Sheer Gleam - Adjusted Video.mp4" muted playsinline preload="metadata" id="portfolioVideo1"></video>
+            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 border-4 border-white flex items-center justify-center backdrop-blur-sm transition-opacity duration-300" id="playIcon1">
+                    <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-primary text-white">▶ VIDEO</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">Sheer Gleam</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">500% increase in engagement across all platforms</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('video1')">Watch Video</button>
+            </div>
+        </div>
+
+        <!-- Bloom Beauty -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="image">
+            <img src="assets/images/Mishcan Logo.jpg" alt="Bloom Beauty" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary hidden items-center justify-center text-6xl">🖼️</div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-accent text-dark">📷 IMAGE</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">Bloom Beauty</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">Viral campaign with 10M+ impressions</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('image1')">View Gallery</button>
+            </div>
+        </div>
+
+        <!-- Urban Eats -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="video">
+            <video class="absolute inset-0 w-full h-full object-cover" src="assets/videos/IMG_8377.MP4" muted playsinline preload="metadata"></video>
+            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 border-4 border-white flex items-center justify-center backdrop-blur-sm transition-opacity duration-300">
+                    <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-primary text-white">▶ VIDEO</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">Urban Eats</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">300% ROI on paid social campaigns</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('video2')">Watch Video</button>
+            </div>
+        </div>
+
+        <!-- FitGear Pro -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="video">
+            <video class="absolute inset-0 w-full h-full object-cover" src="assets/videos/Winter GiveAway 2025.MP4" muted playsinline preload="metadata"></video>
+            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 border-4 border-white flex items-center justify-center backdrop-blur-sm">
+                    <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-primary text-white">▶ VIDEO</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">FitGear Pro</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">Brand transformation driving 400% sales growth</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('fitgear')">Watch Video</button>
+            </div>
+        </div>
+
+        <!-- EcoVibe -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-teal-500 to-blue-600 cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="image">
+            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-accent text-dark">📷 IMAGE</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">EcoVibe</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">Sustainable brand campaign featured in AdWeek</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('image2')">View Gallery</button>
+            </div>
+        </div>
+
+        <!-- Pulse Gaming -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark bg-gradient-to-br from-secondary to-primary cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="campaign">
+            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent bg-[length:200%_200%] animate-shimmer"></div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-secondary text-white">🎯 CAMPAIGN</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">Pulse Gaming</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">Community-driven campaign with 2M+ interactions</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('campaign2')">View Case Study</button>
+            </div>
+        </div>
+
+        <!-- Tasty Cruz -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="video">
+            <video class="absolute inset-0 w-full h-full object-cover" src="assets/videos/Tasty Cruz.MP4" muted playsinline preload="metadata"></video>
+            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 border-4 border-white flex items-center justify-center backdrop-blur-sm">
+                    <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-primary text-white">▶ VIDEO</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">Tasty Cruz</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">Bold flavour meets bold content</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('tastycruz')">Watch Video</button>
+            </div>
+        </div>
+
+        <!-- Bencarthy -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="video">
+            <video class="absolute inset-0 w-full h-full object-cover" src="assets/videos/Bencarthy.MP4" muted playsinline preload="metadata"></video>
+            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/60 border-4 border-white flex items-center justify-center backdrop-blur-sm">
+                    <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-primary text-white">▶ VIDEO</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">Bencarthy</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">Creative campaign built to convert</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('bencarthy')">Watch Video</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-16 border-t-[5px] border-primary relative z-10">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 sm:mb-10 lg:mb-12">
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Blak Communications</h4><p class="text-sm sm:text-base">Creating cultural moments through bold design and strategic thinking.</p></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Pages</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="services.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Services</a></li><li><a href="portfolio.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Portfolio</a></li><li><a href="about.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">About</a></li><li><a href="contact.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Contact</a></li></ul></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Connect</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Instagram</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">LinkedIn</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Behance</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Twitter</a></li></ul></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Contact</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="mailto:hello@blakcomms.ca" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">hello@blakcomms.ca</a></li><li><a href="tel:+1234567890" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">+1 (234) 567-890</a></li><li class="opacity-80">Regina, Saskatchewan, Canada</li></ul></div>
+    </div>
+    <div class="text-center pt-6 sm:pt-8 border-t border-white/10 opacity-60 text-sm"><p>&copy; 2026 Blak Communications. All rights reserved.</p></div>
+</footer>
+
+<!-- MEDIA MODAL -->
+<div id="mediaModal" class="hidden fixed inset-0 bg-black/95 z-[10000] items-center justify-center p-4">
+    <div class="modal-content bg-dark border-4 border-primary w-full max-w-4xl relative flex flex-col" style="max-height:90vh;">
+        <div class="flex-shrink-0 px-6 sm:px-8 pt-6 sm:pt-8 pb-3 relative">
+            <span class="absolute top-4 right-4 sm:top-5 sm:right-6 text-4xl sm:text-5xl text-light cursor-pointer hover:text-primary leading-none z-10" onclick="closeMediaModal()">&times;</span>
+        </div>
+        <div id="modalBody" class="flex-1 overflow-hidden flex flex-col px-6 sm:px-8 pb-6 sm:pb-8 min-h-0"></div>
+    </div>
+</div>
+
+<script>
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    mobileMenuBtn.addEventListener('click', e => { e.stopPropagation(); mobileMenuBtn.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto'; });
+    mobileMenuClose.addEventListener('click', () => { mobileMenuBtn.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { mobileMenuBtn.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; }));
+
+    // Reveal
+    const observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) setTimeout(() => { entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; }, i*80); }); }, { threshold:0.1, rootMargin:'0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Portfolio filter
+    const filterBtns = document.querySelectorAll('.tab-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('bg-primary','text-white','border-primary'));
+            btn.classList.add('bg-primary','text-white','border-primary');
+            const filter = btn.getAttribute('data-filter');
+            portfolioItems.forEach((item, i) => {
+                item.style.opacity='0'; item.style.transform='scale(0.8)';
+                setTimeout(() => {
+                    if (filter==='all' || item.getAttribute('data-type')===filter) { item.classList.remove('hidden'); item.style.opacity='1'; item.style.transform='scale(1)'; }
+                    else item.classList.add('hidden');
+                }, i*50);
+            });
+        });
+    });
+
+    // Portfolio hover + video preview
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const overlay = item.querySelector('.portfolio-overlay');
+            if (overlay) overlay.style.transform = 'translateY(0)';
+            const vid = item.querySelector('video');
+            if (vid) { vid.play().catch(()=>{}); const icon=item.querySelector('[id^="playIcon"]'); if(icon) icon.style.opacity='0'; }
+        });
+        item.addEventListener('mouseleave', () => {
+            const overlay = item.querySelector('.portfolio-overlay');
+            if (overlay) overlay.style.transform = 'translateY(100%)';
+            const vid = item.querySelector('video');
+            if (vid) { vid.pause(); vid.currentTime=0; const icon=item.querySelector('[id^="playIcon"]'); if(icon) icon.style.opacity='1'; }
+        });
+    });
+
+    // Modal
+    function openMediaModal(mediaId) {
+        const modal = document.getElementById('mediaModal');
+        const modalBody = document.getElementById('modalBody');
+        const content = {
+            'video1': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Sheer Gleam</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">500% increase in engagement across all platforms</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="assets/videos/Sheer Gleam - Adjusted Video.mp4" controls autoplay playsinline></video></div>`,
+            'video2': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Urban Eats</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">300% ROI on paid social campaigns</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="assets/videos/IMG_8377.MP4" controls autoplay playsinline></video></div>`,
+            'image1': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Bloom Beauty</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Viral campaign with 10M+ impressions</p><div class="flex-1 min-h-0 flex items-center justify-center bg-white/5 rounded-sm overflow-hidden border-2 border-primary/40"><img src="assets/images/Mishcan Logo.jpg" alt="Bloom Beauty" class="max-w-full max-h-full object-contain"></div>`,
+            'image2': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">EcoVibe</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Sustainable brand campaign featured in AdWeek</p><div class="grid grid-cols-2 gap-2 sm:gap-4 mt-2"><div class="aspect-square bg-gradient-to-br from-teal-400 to-blue-500"></div><div class="aspect-square bg-gradient-to-br from-green-500 to-lime-400"></div><div class="aspect-square bg-gradient-to-br from-blue-500 to-cyan-600"></div><div class="aspect-square bg-gradient-to-br from-green-400 to-teal-500"></div></div>`,
+            'fitgear': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">FitGear Pro</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Brand transformation driving 400% sales growth</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="assets/videos/Winter GiveAway 2025.MP4" controls autoplay playsinline></video></div>`,
+            'campaign2': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white">Pulse Gaming</h2><p class="mb-4 text-sm text-white/60">Building a gaming community from the ground up</p><div class="bg-white/5 p-4 sm:p-6 mb-4 overflow-y-auto"><h3 class="font-montserrat font-extrabold text-lg sm:text-xl mb-2">Strategy</h3><p class="text-sm sm:text-base">Leveraged streaming platforms, Discord communities, and user-generated content to create an authentic gaming brand presence.</p></div><div class="grid grid-cols-3 gap-2 sm:gap-4"><div class="bg-white/5 p-3 sm:p-4 text-center"><div class="text-2xl sm:text-3xl font-black text-primary">2M+</div><div class="text-xs sm:text-sm">Interactions</div></div><div class="bg-white/5 p-3 sm:p-4 text-center"><div class="text-2xl sm:text-3xl font-black text-secondary">150K</div><div class="text-xs sm:text-sm">Community</div></div><div class="bg-white/5 p-3 sm:p-4 text-center"><div class="text-2xl sm:text-3xl font-black text-accent">92%</div><div class="text-xs sm:text-sm">Sentiment</div></div></div>`,
+            'tastycruz': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Tasty Cruz</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Bold flavour meets bold content</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="assets/videos/Tasty Cruz.MP4" controls autoplay playsinline></video></div>`,
+            'bencarthy': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Bencarthy</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Creative campaign built to convert</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="assets/videos/Bencarthy.MP4" controls autoplay playsinline></video></div>`
+        };
+        modalBody.innerHTML = content[mediaId] || '<p class="text-white">Not found</p>';
+        const isMedia = ['video1','video2','fitgear','tastycruz','bencarthy','image1'].includes(mediaId);
+        modalBody.style.display = isMedia ? 'flex' : 'block';
+        if (isMedia) modalBody.style.flexDirection = 'column';
+        else modalBody.style.overflowY = 'auto';
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+    }
+    function closeMediaModal() {
+        const modal = document.getElementById('mediaModal');
+        const modalBody = document.getElementById('modalBody');
+        const vid = modalBody.querySelector('video'); if (vid) vid.pause();
+        setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); modalBody.innerHTML=''; }, 200);
+    }
+    document.getElementById('mediaModal').addEventListener('click', e => { if (e.target===document.getElementById('mediaModal')) closeMediaModal(); });
+    document.addEventListener('keydown', e => { if (e.key==='Escape') closeMediaModal(); });
+
+    // Ripple
+    document.querySelectorAll('button,a').forEach(btn => {
+        btn.style.position='relative'; btn.style.overflow='hidden';
+        btn.addEventListener('click', function(e) { const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height); r.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px`; r.classList.add('ripple'); this.appendChild(r); setTimeout(()=>r.remove(),600); });
+    });
+</script>
+</body>
+</html>

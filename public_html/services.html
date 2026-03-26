@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blak Communications - Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary:'#FF3366',secondary:'#6B5EFF',accent:'#FFD166',dark:'#0A0E27',light:'#F5F5F0' }, fontFamily: { montserrat:['Montserrat','sans-serif'], bebas:['Bebas Neue','cursive'] }, animation: { 'gradient-flow':'gradientFlow 3s ease infinite','slideDown':'slideDown 0.8s ease-out' }, keyframes: { gradientFlow:{'0%,100%':{backgroundPosition:'0% center'},'50%':{backgroundPosition:'100% center'}}, slideDown:{from:{transform:'translateY(-100%)'},to:{transform:'translateY(0)'}} } } } }
+    </script>
+    <style>
+        .bg-grid{background:linear-gradient(90deg,rgba(107,94,255,.03) 1px,transparent 1px),linear-gradient(rgba(107,94,255,.03) 1px,transparent 1px);background-size:80px 80px}
+        .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.6);transform:scale(0);animation:ripple-out .6s ease-out;pointer-events:none}
+        @keyframes ripple-out{to{transform:scale(4);opacity:0}}
+        .mobile-menu{transform:translateX(100%);transition:transform .3s ease-in-out}
+        .mobile-menu.active{transform:translateX(0)}
+        .hamburger span{transition:all .3s ease}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px)}
+        .reveal{opacity:0;transform:translateY(50px);transition:all .8s ease}
+    </style>
+</head>
+<body class="font-montserrat bg-dark text-light overflow-x-hidden">
+<div class="bg-grid fixed inset-0 z-0 opacity-30"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 px-4 sm:px-8 lg:px-16 py-4 lg:py-5 flex justify-between items-center z-50 backdrop-blur-md bg-dark/80 border-b-[3px] border-white/10 animate-slideDown">
+    <a href="index.html"><img src="https://blakcomms.ca/static/media/logo.e0ff797f5db861407c88.png" alt="BLAK" class="h-8 sm:h-10 lg:h-12 w-auto object-contain" onerror="this.style.display='none'"></a>
+    <ul class="hidden lg:flex gap-12 list-none">
+        <li><a href="index.html" class="no-underline text-light/70 font-medium text-base relative hover-link hover:text-light">Home</a></li>
+        <li><a href="services.html" class="no-underline text-primary font-medium text-base relative active-link">Services</a></li>
+        <li><a href="portfolio.html" class="no-underline text-light/70 font-medium text-base relative hover-link hover:text-light">Portfolio</a></li>
+        <li><a href="about.html" class="no-underline text-light/70 font-medium text-base relative hover-link hover:text-light">About</a></li>
+        <li><a href="contact.html" class="no-underline text-light/70 font-medium text-base relative hover-link hover:text-light">Contact</a></li>
+    </ul>
+    <button class="hamburger lg:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center z-[60]" id="mobileMenuBtn">
+        <span class="w-6 h-0.5 bg-light block"></span><span class="w-6 h-0.5 bg-light block"></span><span class="w-6 h-0.5 bg-light block"></span>
+    </button>
+</nav>
+<div class="mobile-menu fixed top-0 right-0 w-full sm:w-80 h-screen bg-dark z-[55] lg:hidden border-l-4 border-primary" id="mobileMenu">
+    <button class="absolute top-8 right-6 text-light text-5xl font-light hover:text-primary transition-colors z-[70]" id="mobileMenuClose">×</button>
+    <ul class="flex flex-col gap-8 list-none pt-24 px-8">
+        <li><a href="index.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Home</a></li>
+        <li><a href="services.html" class="mobile-link no-underline text-primary font-medium text-2xl block py-2">Services</a></li>
+        <li><a href="portfolio.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Portfolio</a></li>
+        <li><a href="about.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">About</a></li>
+        <li><a href="contact.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Contact</a></li>
+    </ul>
+</div>
+
+<!-- PAGE HERO -->
+<section class="pt-40 pb-16 px-4 sm:px-8 lg:px-16 relative z-10 text-center">
+    <div class="absolute top-0 left-0 right-0 h-[5px] bg-gradient-to-r from-primary via-secondary to-accent bg-[length:200%_100%] animate-gradient-flow"></div>
+    <h1 class="font-bebas text-[3rem] sm:text-[5rem] lg:text-[7rem] tracking-[0.1em] reveal">What We Create</h1>
+    <p class="text-lg sm:text-xl opacity-70 max-w-2xl mx-auto mt-4 reveal">Bold services that move audiences and grow brands.</p>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="py-16 px-4 sm:px-8 lg:px-16 relative z-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 max-w-[1400px] mx-auto">
+        <div class="bg-white/5 border-[3px] border-white/10 p-6 sm:p-8 lg:p-12 transition-all duration-[400ms] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+            <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 relative z-10 inline-block transition-transform duration-[400ms] group-hover:scale-125 group-hover:rotate-[10deg]">📱</div>
+            <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-3 sm:mb-4 relative z-10">Social Media Design</h3>
+            <p class="text-base sm:text-lg leading-relaxed opacity-90 relative z-10">Scroll-stopping content for Instagram, TikTok, Twitter, and LinkedIn that amplifies your brand voice and drives engagement.</p>
+        </div>
+        <div class="bg-white/5 border-[3px] border-white/10 p-6 sm:p-8 lg:p-12 transition-all duration-[400ms] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+            <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 relative z-10 inline-block transition-transform duration-[400ms] group-hover:scale-125 group-hover:rotate-[10deg]">🎯</div>
+            <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-3 sm:mb-4 relative z-10">Ad Campaigns</h3>
+            <p class="text-base sm:text-lg leading-relaxed opacity-90 relative z-10">Multi-channel advertising that converts. From Meta ads to YouTube pre-rolls, we craft campaigns that perform.</p>
+        </div>
+        <div class="bg-white/5 border-[3px] border-white/10 p-6 sm:p-8 lg:p-12 transition-all duration-[400ms] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+            <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 relative z-10 inline-block transition-transform duration-[400ms] group-hover:scale-125 group-hover:rotate-[10deg]">✨</div>
+            <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-3 sm:mb-4 relative z-10">Brand Identity</h3>
+            <p class="text-base sm:text-lg leading-relaxed opacity-90 relative z-10">Cohesive visual systems that make your brand instantly recognizable across every platform and touchpoint.</p>
+        </div>
+        <div class="bg-white/5 border-[3px] border-white/10 p-6 sm:p-8 lg:p-12 transition-all duration-[400ms] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+            <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 relative z-10 inline-block transition-transform duration-[400ms] group-hover:scale-125 group-hover:rotate-[10deg]">🎬</div>
+            <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-3 sm:mb-4 relative z-10">Motion Graphics</h3>
+            <p class="text-base sm:text-lg leading-relaxed opacity-90 relative z-10">Eye-catching animations and video content that brings your message to life and captures attention in crowded feeds.</p>
+        </div>
+        <div class="bg-white/5 border-[3px] border-white/10 p-6 sm:p-8 lg:p-12 transition-all duration-[400ms] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+            <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 relative z-10 inline-block transition-transform duration-[400ms] group-hover:scale-125 group-hover:rotate-[10deg]">📊</div>
+            <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-3 sm:mb-4 relative z-10">Content Strategy</h3>
+            <p class="text-base sm:text-lg leading-relaxed opacity-90 relative z-10">Data-driven strategies that align creative excellence with business goals and audience insights.</p>
+        </div>
+        <div class="bg-white/5 border-[3px] border-white/10 p-6 sm:p-8 lg:p-12 transition-all duration-[400ms] relative overflow-hidden group reveal hover:-translate-y-5 hover:scale-105 hover:border-primary hover:shadow-[0_20px_60px_rgba(255,51,102,0.4)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-400 z-0"></div>
+            <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 relative z-10 inline-block transition-transform duration-[400ms] group-hover:scale-125 group-hover:rotate-[10deg]">🚀</div>
+            <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-3 sm:mb-4 relative z-10">Launch Campaigns</h3>
+            <p class="text-base sm:text-lg leading-relaxed opacity-90 relative z-10">Make your product launch unforgettable with integrated campaigns that create buzz and drive conversions.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="py-20 px-4 sm:px-8 lg:px-16 text-center relative z-10">
+    <h2 class="font-bebas text-[2.5rem] sm:text-[4rem] tracking-[0.1em] mb-6 reveal">Ready to Get Started?</h2>
+    <a href="contact.html" class="inline-block px-10 py-5 text-lg font-bold no-underline border-[3px] border-primary bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_rgba(255,255,255,0.2)] reveal">Work With Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-16 border-t-[5px] border-primary relative z-10">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 sm:mb-10 lg:mb-12">
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Blak Communications</h4><p class="text-sm sm:text-base">Creating cultural moments through bold design and strategic thinking.</p></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Pages</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="services.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Services</a></li><li><a href="portfolio.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Portfolio</a></li><li><a href="about.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">About</a></li><li><a href="contact.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Contact</a></li></ul></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Connect</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Instagram</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">LinkedIn</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Behance</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Twitter</a></li></ul></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Contact</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="mailto:hello@blakcomms.ca" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">hello@blakcomms.ca</a></li><li><a href="tel:+1234567890" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">+1 (234) 567-890</a></li><li class="opacity-80">Regina, Saskatchewan, Canada</li></ul></div>
+    </div>
+    <div class="text-center pt-6 sm:pt-8 border-t border-white/10 opacity-60 text-sm"><p>&copy; 2026 Blak Communications. All rights reserved.</p></div>
+</footer>
+
+<script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    mobileMenuBtn.addEventListener('click', e => { e.stopPropagation(); mobileMenuBtn.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto'; });
+    mobileMenuClose.addEventListener('click', () => { mobileMenuBtn.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { mobileMenuBtn.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; }));
+
+    const observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) setTimeout(() => { entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; }, i*100); }); }, { threshold:0.1, rootMargin:'0px 0px -80px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('button,a').forEach(btn => {
+        btn.style.position='relative'; btn.style.overflow='hidden';
+        btn.addEventListener('click', function(e) { const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height); r.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px`; r.classList.add('ripple'); this.appendChild(r); setTimeout(()=>r.remove(),600); });
+    });
+</script>
+</body>
+</html>

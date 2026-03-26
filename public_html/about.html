@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blak Communications - About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors:{primary:'#FF3366',secondary:'#6B5EFF',accent:'#FFD166',dark:'#0A0E27',light:'#F5F5F0'}, fontFamily:{montserrat:['Montserrat','sans-serif'],bebas:['Bebas Neue','cursive']}, animation:{'gradient-flow':'gradientFlow 3s ease infinite','slideDown':'slideDown 0.8s ease-out'}, keyframes:{gradientFlow:{'0%,100%':{backgroundPosition:'0% center'},'50%':{backgroundPosition:'100% center'}},slideDown:{from:{transform:'translateY(-100%)'},to:{transform:'translateY(0)'}}} } } }
+    </script>
+    <style>
+        .bg-grid{background:linear-gradient(90deg,rgba(107,94,255,.03) 1px,transparent 1px),linear-gradient(rgba(107,94,255,.03) 1px,transparent 1px);background-size:80px 80px}
+        .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.6);transform:scale(0);animation:ripple-out .6s ease-out;pointer-events:none}
+        @keyframes ripple-out{to{transform:scale(4);opacity:0}}
+        .mobile-menu{transform:translateX(100%);transition:transform .3s ease-in-out}
+        .mobile-menu.active{transform:translateX(0)}
+        .hamburger span{transition:all .3s ease}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px)}
+        .reveal{opacity:0;transform:translateY(50px);transition:all .8s ease}
+    </style>
+</head>
+<body class="font-montserrat bg-light text-dark overflow-x-hidden">
+<div class="bg-grid fixed inset-0 z-0"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 px-4 sm:px-8 lg:px-16 py-4 lg:py-5 flex justify-between items-center z-50 backdrop-blur-md bg-light/80 border-b-[3px] border-dark animate-slideDown">
+    <a href="index.html"><img src="https://blakcomms.ca/static/media/logo.e0ff797f5db861407c88.png" alt="BLAK" class="h-8 sm:h-10 lg:h-12 w-auto object-contain" onerror="this.style.display='none'"></a>
+    <ul class="hidden lg:flex gap-12 list-none">
+        <li><a href="index.html" class="no-underline text-dark font-medium text-base relative hover-link">Home</a></li>
+        <li><a href="services.html" class="no-underline text-dark font-medium text-base relative hover-link">Services</a></li>
+        <li><a href="portfolio.html" class="no-underline text-dark font-medium text-base relative hover-link">Portfolio</a></li>
+        <li><a href="about.html" class="no-underline text-primary font-bold text-base relative">About <span class="absolute -bottom-1 left-0 w-full h-[3px] bg-primary"></span></a></li>
+        <li><a href="contact.html" class="no-underline text-dark font-medium text-base relative hover-link">Contact</a></li>
+    </ul>
+    <button class="hamburger lg:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center z-[60]" id="mobileMenuBtn">
+        <span class="w-6 h-0.5 bg-dark block"></span><span class="w-6 h-0.5 bg-dark block"></span><span class="w-6 h-0.5 bg-dark block"></span>
+    </button>
+</nav>
+<div class="mobile-menu fixed top-0 right-0 w-full sm:w-80 h-screen bg-dark z-[55] lg:hidden" id="mobileMenu">
+    <button class="absolute top-8 right-6 text-light text-5xl font-light hover:text-primary transition-colors z-[70]" id="mobileMenuClose">×</button>
+    <ul class="flex flex-col gap-8 list-none pt-24 px-8">
+        <li><a href="index.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Home</a></li>
+        <li><a href="services.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Services</a></li>
+        <li><a href="portfolio.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Portfolio</a></li>
+        <li><a href="about.html" class="mobile-link no-underline text-primary font-medium text-2xl block py-2">About</a></li>
+        <li><a href="contact.html" class="mobile-link no-underline text-light font-medium text-2xl block py-2 hover:text-primary">Contact</a></li>
+    </ul>
+</div>
+
+<!-- PAGE HERO -->
+<section class="pt-40 pb-16 px-4 sm:px-8 lg:px-16 relative z-10 text-center">
+    <div class="absolute top-0 left-0 right-0 h-[5px] bg-gradient-to-r from-primary via-secondary to-accent bg-[length:200%_100%] animate-gradient-flow"></div>
+    <h1 class="font-bebas text-[3rem] sm:text-[5rem] lg:text-[7rem] tracking-[0.1em] reveal">Who We Are</h1>
+    <p class="text-lg sm:text-xl opacity-70 max-w-2xl mx-auto mt-4 reveal">A team obsessed with making brands impossible to ignore.</p>
+</section>
+
+<!-- STORY -->
+<section class="py-16 px-4 sm:px-8 lg:px-16 relative z-10">
+    <div class="max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+            <h2 class="font-bebas text-[2.5rem] sm:text-[3.5rem] tracking-wider mb-6 reveal">Built for the Bold</h2>
+            <p class="text-base sm:text-lg leading-relaxed opacity-80 mb-6 reveal">Blak Communications was founded with one mission: create work that doesn't just fill a feed — it stops it. We're a creative studio rooted in strategy, obsessed with culture, and committed to producing content that actually moves people.</p>
+            <p class="text-base sm:text-lg leading-relaxed opacity-80 mb-8 reveal">From Regina, Saskatchewan, we've helped brands across Canada punch above their weight, reach new audiences, and grow businesses through the power of bold creative.</p>
+            <a href="contact.html" class="inline-block px-8 py-4 font-bold no-underline border-[3px] border-dark bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_#0A0E27] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_#0A0E27] reveal">Work With Us</a>
+        </div>
+        <div class="grid grid-cols-2 gap-4 reveal">
+            <div class="bg-dark text-light p-6 sm:p-8 border-4 border-primary"><div class="font-bebas text-4xl sm:text-5xl text-primary mb-2">Bold</div><p class="text-sm sm:text-base opacity-80">We don't do safe. We do memorable.</p></div>
+            <div class="bg-accent text-dark p-6 sm:p-8 border-4 border-dark"><div class="font-bebas text-4xl sm:text-5xl text-dark mb-2">Sharp</div><p class="text-sm sm:text-base opacity-80">Strategy lives behind every pixel.</p></div>
+            <div class="bg-secondary text-light p-6 sm:p-8 border-4 border-dark"><div class="font-bebas text-4xl sm:text-5xl text-accent mb-2">Fast</div><p class="text-sm sm:text-base opacity-80">Culture moves quick. So do we.</p></div>
+            <div class="bg-light text-dark p-6 sm:p-8 border-4 border-dark"><div class="font-bebas text-4xl sm:text-5xl text-primary mb-2">Real</div><p class="text-sm opacity-80">Authentic work for real audiences.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-accent relative z-10">
+    <h2 class="font-bebas text-[2.5rem] sm:text-[4rem] lg:text-[6rem] mb-12 lg:mb-16 text-center tracking-[0.1em] reveal">The Numbers Speak</h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-16 max-w-[1400px] mx-auto text-center">
+        <div class="reveal stat-block"><div class="stat-number font-bebas font-black text-4xl sm:text-6xl lg:text-8xl text-dark leading-none mb-2 sm:mb-4">250+</div><div class="font-medium text-sm sm:text-lg lg:text-xl text-dark opacity-80">Brands Amplified</div></div>
+        <div class="reveal stat-block"><div class="stat-number font-bebas font-black text-4xl sm:text-6xl lg:text-8xl text-dark leading-none mb-2 sm:mb-4">50M+</div><div class="font-medium text-sm sm:text-lg lg:text-xl text-dark opacity-80">Total Impressions</div></div>
+        <div class="reveal stat-block"><div class="stat-number font-bebas font-black text-4xl sm:text-6xl lg:text-8xl text-dark leading-none mb-2 sm:mb-4">4.8x</div><div class="font-medium text-sm sm:text-lg lg:text-xl text-dark opacity-80">Average ROI</div></div>
+        <div class="reveal stat-block"><div class="stat-number font-bebas font-black text-4xl sm:text-6xl lg:text-8xl text-dark leading-none mb-2 sm:mb-4">98%</div><div class="font-medium text-sm sm:text-lg lg:text-xl text-dark opacity-80">Client Satisfaction</div></div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-dark text-light relative z-10">
+    <h2 class="font-bebas text-[2.5rem] sm:text-[4rem] lg:text-[6rem] mb-12 lg:mb-16 text-center tracking-[0.1em] reveal">Our Process</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-[1000px] mx-auto text-center">
+        <div class="reveal">
+            <div class="text-6xl lg:text-8xl mb-6">💡</div>
+            <h3 class="font-bebas text-2xl sm:text-3xl tracking-wider mb-3 text-accent">01 — Ideate</h3>
+            <p class="opacity-80 text-sm sm:text-base leading-relaxed">We dig into your brand, audience, and goals to develop ideas that are both creatively bold and strategically sound.</p>
+        </div>
+        <div class="reveal">
+            <div class="text-6xl lg:text-8xl mb-6">🎨</div>
+            <h3 class="font-bebas text-2xl sm:text-3xl tracking-wider mb-3 text-accent">02 — Design</h3>
+            <p class="opacity-80 text-sm sm:text-base leading-relaxed">Our team crafts visuals, copy, and content that cuts through the noise and speaks directly to your audience.</p>
+        </div>
+        <div class="reveal">
+            <div class="text-6xl lg:text-8xl mb-6">🚀</div>
+            <h3 class="font-bebas text-2xl sm:text-3xl tracking-wider mb-3 text-accent">03 — Launch</h3>
+            <p class="opacity-80 text-sm sm:text-base leading-relaxed">We deploy campaigns with precision, monitor performance, and iterate to maximise impact and ROI.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-16 border-t-[5px] border-primary relative z-10">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 sm:mb-10 lg:mb-12">
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Blak Communications</h4><p class="text-sm sm:text-base">Creating cultural moments through bold design and strategic thinking.</p></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Pages</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="services.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Services</a></li><li><a href="portfolio.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Portfolio</a></li><li><a href="about.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">About</a></li><li><a href="contact.html" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Contact</a></li></ul></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Connect</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Instagram</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">LinkedIn</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Behance</a></li><li><a href="#" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">Twitter</a></li></ul></div>
+        <div><h4 class="font-bebas text-2xl sm:text-3xl mb-4 sm:mb-6 tracking-wider">Contact</h4><ul class="list-none space-y-2 text-sm sm:text-base"><li><a href="mailto:hello@blakcomms.ca" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">hello@blakcomms.ca</a></li><li><a href="tel:+1234567890" class="text-light no-underline opacity-80 hover:opacity-100 hover:text-primary">+1 (234) 567-890</a></li><li class="opacity-80">Regina, Saskatchewan, Canada</li></ul></div>
+    </div>
+    <div class="text-center pt-6 sm:pt-8 border-t border-white/10 opacity-60 text-sm"><p>&copy; 2026 Blak Communications. All rights reserved.</p></div>
+</footer>
+
+<script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    mobileMenuBtn.addEventListener('click', e => { e.stopPropagation(); mobileMenuBtn.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto'; });
+    mobileMenuClose.addEventListener('click', () => { mobileMenuBtn.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { mobileMenuBtn.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; }));
+
+    const observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) setTimeout(() => { entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; }, i*100); }); }, { threshold:0.1, rootMargin:'0px 0px -80px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Stats counter
+    const statTargets = { '250+': 250, '50M+': 50, '4.8x': 4.8, '98%': 98 };
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target.querySelector('.stat-number');
+                if (!el) return;
+                const text = el.textContent;
+                const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+                const suffix = text.includes('M+') ? 'M+' : text.includes('x') ? 'x' : text.includes('%') ? '%' : '+';
+                let cur = 0; const inc = num / 80;
+                const t = setInterval(() => { cur += inc; if (cur >= num) { el.textContent = num + suffix; clearInterval(t); } else { el.textContent = Math.floor(cur) + ''; } }, 20);
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold:0.5 });
+    document.querySelectorAll('.stat-block').forEach(el => statsObserver.observe(el));
+
+    document.querySelectorAll('button,a').forEach(btn => {
+        btn.style.position='relative'; btn.style.overflow='hidden';
+        btn.addEventListener('click', function(e) { const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height); r.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px`; r.classList.add('ripple'); this.appendChild(r); setTimeout(()=>r.remove(),600); });
+    });
+</script>
+</body>
+</html>
