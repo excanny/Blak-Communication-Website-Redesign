@@ -130,7 +130,7 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // Stats counter
-    const statTargets = { '250+': 250, '50M+': 50, '4.8x': 4.8, '98%': 98 };
+    const statTargets = { '250+': 250, '1000+': 50, '4.8x': 4.8, '98%': 98 };
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
