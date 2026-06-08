@@ -8,6 +8,15 @@
     <script>
         tailwind.config = { theme: { extend: { colors:{primary:'#FF3366',secondary:'#6B5EFF',accent:'#FFD166',dark:'#0A0E27',light:'#F5F5F0'}, fontFamily:{montserrat:['Montserrat','sans-serif'],bebas:['Bebas Neue','cursive']}, animation:{'gradient-flow':'gradientFlow 3s ease infinite','slideDown':'slideDown 0.8s ease-out'}, keyframes:{gradientFlow:{'0%,100%':{backgroundPosition:'0% center'},'50%':{backgroundPosition:'100% center'}},slideDown:{from:{transform:'translateY(-100%)'},to:{transform:'translateY(0)'}}} } } }
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SY2N07K4FB"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SY2N07K4FB');
+    </script>
     <style>
         .bg-grid{background:linear-gradient(90deg,rgba(107,94,255,.03) 1px,transparent 1px),linear-gradient(rgba(107,94,255,.03) 1px,transparent 1px);background-size:80px 80px}
         .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.6);transform:scale(0);animation:ripple-out .6s ease-out;pointer-events:none}
