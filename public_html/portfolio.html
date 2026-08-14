@@ -192,6 +192,18 @@
             </div>
         </div>
 
+        <!-- Give Away -->
+        <div class="portfolio-item relative aspect-[4/3] overflow-hidden border-4 border-dark cursor-pointer transition-all duration-500 hover:scale-105 hover:-rotate-3 hover:z-10 hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)] reveal" data-type="image">
+            <img src="assets/images/IMG_4868.PNG" alt="Give Away" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary hidden items-center justify-center text-6xl">🖼️</div>
+            <div class="absolute top-2 sm:top-4 left-2 sm:left-4 px-3 sm:px-4 py-1 sm:py-2 font-bold text-xs sm:text-sm z-20 border-2 border-dark bg-accent text-dark">📷 IMAGE</div>
+            <div class="portfolio-overlay absolute bottom-0 left-0 right-0 bg-dark/95 text-white p-4 sm:p-6 lg:p-8 translate-y-full transition-transform duration-400">
+                <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl lg:text-3xl mb-2">Give Away</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">Sponsor, Donate and Make a difference</p>
+                <button class="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white border-none font-bold text-sm sm:text-base transition-all duration-300 hover:bg-accent hover:text-dark" onclick="openMediaModal('giveaway')">View Gallery</button>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -275,10 +287,11 @@
             'fitgear': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">FitGear Pro</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Brand transformation driving 400% sales growth</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="https://blakcomms.ca/videos/Winter GiveAway 2025.MP4" controls autoplay playsinline></video></div>`,
             'campaign2': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white">Pulse Gaming</h2><p class="mb-4 text-sm text-white/60">Building a gaming community from the ground up</p><div class="bg-white/5 p-4 sm:p-6 mb-4 overflow-y-auto"><h3 class="font-montserrat font-extrabold text-lg sm:text-xl mb-2">Strategy</h3><p class="text-sm sm:text-base">Leveraged streaming platforms, Discord communities, and user-generated content to create an authentic gaming brand presence.</p></div><div class="grid grid-cols-3 gap-2 sm:gap-4"><div class="bg-white/5 p-3 sm:p-4 text-center"><div class="text-2xl sm:text-3xl font-black text-primary">2M+</div><div class="text-xs sm:text-sm">Interactions</div></div><div class="bg-white/5 p-3 sm:p-4 text-center"><div class="text-2xl sm:text-3xl font-black text-secondary">150K</div><div class="text-xs sm:text-sm">Community</div></div><div class="bg-white/5 p-3 sm:p-4 text-center"><div class="text-2xl sm:text-3xl font-black text-accent">92%</div><div class="text-xs sm:text-sm">Sentiment</div></div></div>`,
             'tastycruz': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Tasty Cruz</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Bold flavour meets bold content</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="https://blakcomms.ca/videos/Tasty Cruz.MP4" controls autoplay playsinline></video></div>`,
-            'bencarthy': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Bencarthy</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Creative campaign built to convert</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="https://blakcomms.ca/videos/Bencarthy.MP4" controls autoplay playsinline></video></div>`
+            'bencarthy': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Bencarthy</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Creative campaign built to convert</p><div class="video-embed-wrapper rounded-sm overflow-hidden border-2 border-primary/40 flex-1 min-h-0"><video src="https://blakcomms.ca/videos/Bencarthy.MP4" controls autoplay playsinline></video></div>`,
+            'giveaway': `<h2 class="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex-shrink-0">Give Away</h2><p class="mb-3 text-xs sm:text-sm text-white/60 flex-shrink-0">Sponsor, Donate and Make a difference</p><div class="flex-1 min-h-0 flex items-center justify-center bg-white/5 rounded-sm overflow-hidden border-2 border-primary/40"><img src="assets/images/IMG_4868.PNG" alt="Give Away" class="max-w-full max-h-full object-contain"></div>`
         };
         modalBody.innerHTML = content[mediaId] || '<p class="text-white">Not found</p>';
-        const isMedia = ['video1','video2','fitgear','tastycruz','bencarthy','image1'].includes(mediaId);
+        const isMedia = ['video1','video2','fitgear','tastycruz','bencarthy','image1','giveaway'].includes(mediaId);
         modalBody.style.display = isMedia ? 'flex' : 'block';
         if (isMedia) modalBody.style.flexDirection = 'column';
         else modalBody.style.overflowY = 'auto';
