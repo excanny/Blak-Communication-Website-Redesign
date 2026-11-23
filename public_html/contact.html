@@ -142,7 +142,8 @@
                     <label class="block text-sm font-bold opacity-60 mb-2 tracking-widest uppercase">Message</label>
                     <textarea id="fmessage" rows="5" placeholder="Tell us about your project..." class="w-full bg-white/5 border-[3px] border-white/20 px-4 py-3 text-light font-montserrat text-base transition-colors duration-200 resize-none focus:border-primary" style="outline:none"></textarea>
                 </div>
-                <button onclick="submitForm()" class="w-full py-4 sm:py-5 text-base sm:text-lg font-bold border-[3px] border-primary bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_rgba(255,255,255,0.2)] relative overflow-hidden">Send Message</button>
+                <button id="submitBtn" onclick="submitForm()" class="w-full py-4 sm:py-5 text-base sm:text-lg font-bold border-[3px] border-primary bg-primary text-white transition-all duration-300 shadow-[8px_8px_0_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_rgba(255,255,255,0.2)] relative overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed">Send Message</button>
+                <p id="formError" class="hidden text-sm text-primary font-medium"></p>
             </div>
             <div id="formSuccess" class="hidden text-center py-12">
                 <div class="text-6xl mb-6">🎉</div>
@@ -179,13 +180,41 @@
     const type = new URLSearchParams(location.search).get('type');
     if (type === 'philanthropy') document.getElementById('fservice').value = 'Philanthropy Request';
 
-    function submitForm() {
+    const FORMSPREE_URL = 'https://formspree.io/f/mgakpyvw';
+
+    async function submitForm() {
         const name = document.getElementById('fname').value.trim();
         const email = document.getElementById('femail').value.trim();
+        const service = document.getElementById('fservice').value;
         const message = document.getElementById('fmessage').value.trim();
-        if (!name || !email || !message) { alert('Please fill in your name, email, and message.'); return; }
-        document.getElementById('contactForm').classList.add('hidden');
-        document.getElementById('formSuccess').classList.remove('hidden');
+        const btn = document.getElementById('submitBtn');
+        const err = document.getElementById('formError');
+        err.classList.add('hidden');
+
+        if (!name || !email || !message) {
+            err.textContent = 'Please fill in your name, email, and message.';
+            err.classList.remove('hidden');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        try {
+            const res = await fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ name, email, service, message, _subject: 'New message from blakcomms.ca' })
+            });
+            if (!res.ok) throw new Error('Request failed');
+            document.getElementById('contactForm').classList.add('hidden');
+            document.getElementById('formSuccess').classList.remove('hidden');
+        } catch (e) {
+            err.textContent = 'Something went wrong. Please try again or email us at hello@blakcomms.ca';
+            err.classList.remove('hidden');
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+        }
     }
 
     document.querySelectorAll('button,a').forEach(btn => {
