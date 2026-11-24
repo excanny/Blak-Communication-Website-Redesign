@@ -86,7 +86,7 @@
 </section>
 
 <!-- STATS -->
-<!-- EDIT: replace 00 with your real figures -->
+<!-- EDIT: replace figures with your real numbers -->
 <section class="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-accent relative z-10">
     <h2 class="font-bebas text-[2.5rem] sm:text-[4rem] lg:text-[6rem] mb-12 lg:mb-16 text-center tracking-[0.1em] reveal">Our Impact</h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 max-w-[1100px] mx-auto text-center">
@@ -119,27 +119,23 @@
 </section>
 
 <!-- PROJECT MEDIA -->
-<!-- EDIT: swap each src/data-src for your real files. data-type is "video" or "image". data-title shows in the popup. -->
+<!-- EDIT: swap each src/data-src for your real files. data-title shows in the popup.
+     SHORTS: replace each AbCd12345 with your Short's ID (the part after /shorts/ in its URL). Put the Short's ID or full URL in data-yt (optional: data-thumb="assets/images/yourthumb.jpg" to use your own thumbnail). Each .short-item is a tall (row-span-2) tile that plays in the popup; move or copy them anywhere in the grid. -->
 <section class="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-light relative z-10">
     <div class="max-w-[1400px] mx-auto">
         <h2 class="font-bebas text-[2.5rem] sm:text-[4rem] lg:text-[6rem] mb-4 text-center tracking-[0.1em] reveal">Recent Projects</h2>
         <p class="text-center opacity-70 max-w-2xl mx-auto mb-12 reveal">A look at some of the work we've given back.</p>
 
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 grid-flow-dense auto-rows-[180px] sm:auto-rows-[240px] lg:auto-rows-[300px]">
-            <!-- VIDEOS DISABLED: the two video tiles have the "hidden" class. To re-enable, remove "hidden" from both and set preload back to "metadata". Confirm this tall video URL first. -->
-            <div class="media-item hidden row-span-2 relative overflow-hidden border-4 border-dark cursor-pointer bg-dark reveal" data-type="video" data-src="https://blakcomms.ca/videos/Philanthropy 1.mp4" data-title="Project Video">
-                <video class="w-full h-full object-cover" src="https://blakcomms.ca/videos/Philanthropy 1.mp4" muted playsinline preload="none" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none"><span class="font-extrabold text-white text-sm">Project Video</span></div>
-                <div class="absolute top-3 left-3 px-3 py-1 font-bold text-xs border-2 border-dark bg-primary text-white pointer-events-none">▶ VIDEO</div>
-            </div>
             <div class="media-item relative overflow-hidden border-4 border-dark cursor-pointer reveal" data-type="image" data-src="assets/images/hope starts with us 3.png" data-title="Hope Starts With Us">
                 <img src="assets/images/hope starts with us 3.png" alt="Sponsor.Donate" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#6B5EFF,#FFD166)';this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-3 pointer-events-none"><span class="font-extrabold text-white text-xs">Hope Starts With Us</span></div>
             </div>
-            <div class="media-item hidden col-span-2 lg:col-start-2 lg:row-start-2 relative overflow-hidden border-4 border-dark cursor-pointer bg-dark reveal" data-type="video" data-src="https://blakcomms.ca/videos/Philanthropy 2.mp4" data-title="Project Four">
-                <video class="w-full h-full object-cover" src="https://blakcomms.ca/videos/Philanthropy 2.mp4" muted playsinline preload="none" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none"><span class="font-extrabold text-white text-sm">Project Four</span></div>
-                <div class="absolute top-3 left-3 px-3 py-1 font-bold text-xs border-2 border-dark bg-primary text-white pointer-events-none">▶ VIDEO</div>
+            <div class="media-item short-item row-span-2 relative overflow-hidden border-4 border-primary cursor-pointer bg-dark reveal" data-type="short" data-yt="IPNKK8u3kZU" data-title="BLAK Short 1">
+                <div class="fallback-title hidden absolute inset-0 items-start justify-center p-6 pt-16 text-center font-bebas text-3xl tracking-wider text-white pointer-events-none"></div>
+                <img class="yt-thumb w-full h-full object-cover" alt="BLAK Short 1" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-dark/20 hover:bg-dark/40 transition-colors duration-300 pointer-events-none"><span class="w-16 h-16 rounded-full bg-primary border-[3px] border-dark flex items-center justify-center text-white text-2xl pl-1">▶</span></div>
+                <div class="absolute top-3 left-3 px-3 py-1 font-bold text-xs border-2 border-dark bg-primary text-white pointer-events-none">▶ SHORT</div>
             </div>
             <div class="media-item relative overflow-hidden border-4 border-dark cursor-pointer reveal" data-type="image" data-src="assets/images/THAK YOU 2.png" data-title="BLAK">
                 <img src="assets/images/THAK YOU 2.png" alt="THAK YOU" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD166,#FF3366)';this.style.display='none'">
@@ -153,6 +149,12 @@
                 <img src="assets/images/winter giveaway_.png" alt="BLAK" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD166,#FF3366)';this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-3 pointer-events-none"><span class="font-extrabold text-white text-xs">BLAK</span></div>
             </div>
+            <div class="media-item short-item row-span-2 relative overflow-hidden border-4 border-accent cursor-pointer bg-dark reveal" data-type="short" data-yt="IPNKK8u3kZU" data-title="BLAK Short 2">
+                <div class="fallback-title hidden absolute inset-0 items-start justify-center p-6 pt-16 text-center font-bebas text-3xl tracking-wider text-white pointer-events-none"></div>
+                <img class="yt-thumb w-full h-full object-cover" alt="BLAK Short 2" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-dark/20 hover:bg-dark/40 transition-colors duration-300 pointer-events-none"><span class="w-16 h-16 rounded-full bg-primary border-[3px] border-dark flex items-center justify-center text-white text-2xl pl-1">▶</span></div>
+                <div class="absolute top-3 left-3 px-3 py-1 font-bold text-xs border-2 border-dark bg-primary text-white pointer-events-none">▶ SHORT</div>
+            </div>
             <div class="media-item relative overflow-hidden border-4 border-dark cursor-pointer reveal" data-type="image" data-src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47 (1).jpeg" data-title="BLAK">
                 <img src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47 (1).jpeg" alt="BLAK" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD166,#FF3366)';this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-3 pointer-events-none"><span class="font-extrabold text-white text-xs">BLAK</span></div>
@@ -165,6 +167,12 @@
                 <img src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47 (3).jpeg" alt="BLAK" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD166,#FF3366)';this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-3 pointer-events-none"><span class="font-extrabold text-white text-xs">BLAK</span></div>
             </div>
+            <div class="media-item short-item row-span-2 relative overflow-hidden border-4 border-secondary cursor-pointer bg-dark reveal" data-type="short" data-yt="IPNKK8u3kZU" data-title="BLAK Short 3">
+                <div class="fallback-title hidden absolute inset-0 items-start justify-center p-6 pt-16 text-center font-bebas text-3xl tracking-wider text-white pointer-events-none"></div>
+                <img class="yt-thumb w-full h-full object-cover" alt="BLAK Short 3" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-dark/20 hover:bg-dark/40 transition-colors duration-300 pointer-events-none"><span class="w-16 h-16 rounded-full bg-primary border-[3px] border-dark flex items-center justify-center text-white text-2xl pl-1">▶</span></div>
+                <div class="absolute top-3 left-3 px-3 py-1 font-bold text-xs border-2 border-dark bg-primary text-white pointer-events-none">▶ SHORT</div>
+            </div>
             <div class="media-item relative overflow-hidden border-4 border-dark cursor-pointer reveal" data-type="image" data-src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47 (4).jpeg" data-title="BLAK">
                 <img src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47 (4).jpeg" alt="BLAK" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD166,#FF3366)';this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-3 pointer-events-none"><span class="font-extrabold text-white text-xs">BLAK</span></div>
@@ -176,6 +184,12 @@
             <div class="media-item relative overflow-hidden border-4 border-dark cursor-pointer reveal" data-type="image" data-src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47 (6).jpeg" data-title="BLAK">
                 <img src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47 (6).jpeg" alt="BLAK" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD166,#FF3366)';this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-3 pointer-events-none"><span class="font-extrabold text-white text-xs">BLAK</span></div>
+            </div>
+            <div class="media-item short-item row-span-2 relative overflow-hidden border-4 border-primary cursor-pointer bg-dark reveal" data-type="short" data-yt="IPNKK8u3kZU" data-title="BLAK Short 4">
+                <div class="fallback-title hidden absolute inset-0 items-start justify-center p-6 pt-16 text-center font-bebas text-3xl tracking-wider text-white pointer-events-none"></div>
+                <img class="yt-thumb w-full h-full object-cover" alt="BLAK Short 4" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center bg-dark/20 hover:bg-dark/40 transition-colors duration-300 pointer-events-none"><span class="w-16 h-16 rounded-full bg-primary border-[3px] border-dark flex items-center justify-center text-white text-2xl pl-1">▶</span></div>
+                <div class="absolute top-3 left-3 px-3 py-1 font-bold text-xs border-2 border-dark bg-primary text-white pointer-events-none">▶ SHORT</div>
             </div>
             <div class="media-item relative overflow-hidden border-4 border-dark cursor-pointer reveal" data-type="image" data-src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47.jpeg" data-title="BLAK">
                 <img src="assets/images/WhatsApp Image 2026-11-23 at 00.57.47.jpeg" alt="BLAK" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD166,#FF3366)';this.style.display='none'">
@@ -206,7 +220,7 @@
     <div class="text-center pt-6 sm:pt-8 border-t border-white/10 opacity-60 text-sm"><p>&copy; 2026 Blak Communications. All rights reserved.</p></div>
 </footer>
 
-<!-- MEDIA MODAL -->
+<!-- MEDIA MODAL (images) -->
 <div id="mediaModal" class="hidden fixed inset-0 bg-black/95 z-[10000] items-center justify-center p-4">
     <div class="bg-dark border-4 border-primary w-full max-w-4xl relative flex flex-col" style="max-height:90vh;">
         <div class="flex-shrink-0 px-6 sm:px-8 pt-6 sm:pt-8 pb-3 relative">
@@ -237,13 +251,37 @@
     }
     document.querySelectorAll('.media-item').forEach(item => item.addEventListener('click', () => {
         const type = item.dataset.type;
-        const el = document.createElement(type === 'video' ? 'video' : 'img');
-        el.src = item.dataset.src; el.className = 'max-w-full object-contain'; el.style.maxHeight = 'calc(90vh - 130px)';
-        if (type === 'video') { el.controls = true; el.autoplay = true; el.playsInline = true; } else { el.alt = item.dataset.title; }
+        let el;
+        if (type === 'short') {
+            // Plays inside the site: YouTube embed in the popup (9:16)
+            el = document.createElement('iframe');
+            el.src = 'https://www.youtube-nocookie.com/embed/' + ytId(item.dataset.yt) + '?autoplay=1&playsinline=1&rel=0&modestbranding=1';
+            el.title = item.dataset.title;
+            el.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+            el.allowFullscreen = true;
+            el.referrerPolicy = 'strict-origin-when-cross-origin';
+            el.className = 'border-0 bg-black max-w-full';
+            el.style.aspectRatio = '9 / 16';
+            el.style.height = 'calc(90vh - 130px)';
+        } else {
+            el = document.createElement(type === 'video' ? 'video' : 'img');
+            el.src = item.dataset.src; el.className = 'max-w-full object-contain'; el.style.maxHeight = 'calc(90vh - 130px)';
+            if (type === 'video') { el.controls = true; el.autoplay = true; el.playsInline = true; } else { el.alt = item.dataset.title; }
+        }
         modalBody.innerHTML = ''; modalBody.appendChild(el);
         document.getElementById('mediaTitle').textContent = item.dataset.title;
         mediaModal.classList.remove('hidden'); mediaModal.classList.add('flex');
     }));
+
+    // Shorts: data-yt accepts a video ID or a full YouTube/Shorts URL. Optional data-thumb = your own thumbnail image.
+    function ytId(v) { const m = (v || '').match(/(?:shorts\/|v=|youtu\.be\/|embed\/)([\w-]{11})/); return m ? m[1] : (v || '').trim(); }
+    document.querySelectorAll('.short-item').forEach((item, i) => {
+        const img = item.querySelector('.yt-thumb'), fb = item.querySelector('.fallback-title');
+        const gradients = ['#6B5EFF,#FF3366', '#FFD166,#FF3366', '#FF3366,#6B5EFF', '#6B5EFF,#FFD166'];
+        img.onerror = () => { item.style.background = 'linear-gradient(160deg,' + gradients[i % 4] + ')'; img.style.display = 'none'; fb.textContent = item.dataset.title; fb.classList.remove('hidden'); fb.classList.add('flex'); };
+        img.src = item.dataset.thumb || 'https://i.ytimg.com/vi/' + ytId(item.dataset.yt) + '/hqdefault.jpg';
+    });
+
     mediaModal.addEventListener('click', e => { if (e.target === mediaModal) closeMediaModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMediaModal(); });
 
